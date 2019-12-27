@@ -1,0 +1,34 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+
+zuul:
+  host:
+    connect-timeout-millis: 15000
+    socket-timeout-millis: 60000
+  routes:
+    cps-user:
+      path: /User/**
+      serviceId: User
+
+#    cps-business:
+#      path: /business/**
+#      serviceId: cps-business
+#
+#    cps-config-server:
+#      path: /config-server/**
+#      serviceId: cps-config-server
+
+  ignored-services: "*"
+
+#ribbon:
+#  ReadTimeout: 10000
+#  ConnectTimeout: 10000
+
